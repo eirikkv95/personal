@@ -1,2 +1,12 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<div class="container">
+  <h1>Let there be light</h1>
+</div>
+
+<style>
+  .container {
+    height: 2000px;
+  }
+  h1 {
+    color: white;
+  }
+</style>
