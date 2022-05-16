@@ -3,12 +3,7 @@
 
   let show = false;
   let lastScroll = 0;
-  let eirik = 'This girl e';
-  // let showHamburgerBar;
 
-  const changeText = () => {
-    eirik = 'Suiiiiii';
-  };
   onMount(() => {
     window.onscroll = () => {
       const currentScroll = window.scrollY;
@@ -23,22 +18,11 @@
       }
     };
   });
-  // onMount(() => {
-  //   window.onscroll = () => {
-  //     const scrollCurrent = window.scrollY;
-  //     if (scrollCurrent <= 640) {
-  //       showHamburgerBar = true;
-  //     } else showHamburgerBar = false;
-  //   };
-  // });
 </script>
 
 <div class="header" class:scrolled={show}>
   <nav class="maxWidthWrapper">
     <a href="/" class="noLink">Eirik Kalvø Vattøy</a>
-    <div on:click={changeText}>
-      {eirik}
-    </div>
     <ul>
       <li>
         <a href="/posts">Posts</a>
