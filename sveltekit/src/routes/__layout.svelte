@@ -2,6 +2,12 @@
   import '../css/styles.css';
   import Navigation from '../components/Navigation.svelte';
   import { query, searching } from '$lib/search/stores.js';
+  import { onMount } from 'svelte';
+
+  let platform;
+  onMount(() => {
+    platform = navigator.platform === 'MacIntel' ? '⌘' : 'Ctrl';
+  });
 </script>
 
 <Navigation />
@@ -23,7 +29,7 @@
         on:touchstart|preventDefault={() => ($searching = true)}
       />
       <label for="#search">
-        <!-- <span>Search <kbd>{navigator.platform === 'MacIntel' ? '⌘' : 'Ctrl'}</kbd> <kbd>K</kbd></span> -->
+        <span>Search <kbd>{platform == undefined ? '' : '⌘'}</kbd> <kbd>K</kbd></span>
       </label>
     </div>
   {/if}
@@ -33,15 +39,26 @@
 <style>
   main {
     position: relative;
-    /* display: grid;
-    grid-template:
-      'newest categories'
-      'newest popular' 1fr / 2fr 1fr; */
-    /* gap: 64px 96px; */
     padding-top: 64px;
+  }
+  .search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    animation: fade-in 0.5s;
+    width: 100%;
+    height: 100%;
   }
   input {
     border-radius: 18px;
     border: none;
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 </style>

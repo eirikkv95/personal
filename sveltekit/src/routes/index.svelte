@@ -80,7 +80,6 @@
       <input
         type="text"
         aria-describedby="search-description"
-        bind:value={$query}
         autofocus
         placeholder="Search"
         on:keydown={(e) => {
@@ -89,6 +88,9 @@
               modal.querySelector('a').click();
             }
           }
+        }}
+        on:input={(e) => {
+          $query = e.target.value;
         }}
       />
       <div class="result" class:hide={!$query}>
@@ -160,6 +162,12 @@
   .modal-background {
     background-color: rgba(182, 182, 182, 0.135);
   }
+  .modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+  }
   .search-box {
     position: relative;
     height: calc(100% - 2rem);
@@ -171,6 +179,11 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    margin-top: 20rem;
+  }
+
+  .search-box > * {
+    pointer-events: all;
   }
   .hide {
     display: none;
